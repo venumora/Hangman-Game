@@ -98,7 +98,7 @@
 		previousGuesses = [];
 		currentState = getRandomState();
 		livesElement.innerHTML = lives;
-		takeaway.innerHTML = `Let\'s play Hangman!! ${playerName || 'Anonymous'}. Guess the state of the USA`;
+		takeaway.innerHTML = `Let\'s play Hangman!! ${playerName || 'Anonymous'}, Start typing letters. Guess the state of the USA`;
 		hangmanText = currentState.name.replace(/[\s]/g, '  ').replace(/[a-z]/gi, '_ ');
 		hangmanTextElement.innerHTML = hangmanText.replace(/\s\s/g, '&nbsp;&nbsp;');
 		document.getElementById('sofarContainer').innerHTML = '<p>Letters guessed so far: <span id="sofar"></span></p>';
@@ -129,6 +129,7 @@
 	}
 
 	document.addEventListener('keyup', (event) => {
+		event.preventDefault();
 		if(!gameStarted) {
 			startGame();
 			return;
