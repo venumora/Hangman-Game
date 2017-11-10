@@ -69,7 +69,7 @@
     	return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 	}
 
-	// playerName = prompt('Who are you?');
+	playerName = prompt('Hello!! What should I call you?');
 
 	function getRandomState(id) {
 		if(id) {
@@ -96,7 +96,7 @@
 		hangmanText = '';
 		lives = 6;
 		previousGuesses = [];
-		currentState = getRandomState(7);
+		currentState = getRandomState();
 		livesElement.innerHTML = lives;
 		takeaway.innerHTML = `Let\'s play Hangman!! ${playerName || 'Anonymous'}. Guess the state of the USA`;
 		hangmanText = currentState.name.replace(/[\s]/g, '  ').replace(/[a-z]/gi, '_ ');
@@ -111,11 +111,13 @@
 		});
 		hangmanTextElement.innerHTML = currentState.name;
 		if(isWin) {
-			takeaway.innerHTML = `You got it right!<p>Enter any key to restart the Game</p>`;
+			takeaway.innerHTML = `${playerName} you are Awesome!<p>Enter any key to restart the Game</p>`;
 			hangmanTextElement.classList.add('won');
+			hangmanTextElement.classList.remove('lost');
 		} else {
 			takeaway.innerHTML = `Never mind try again!<p>Enter any key to restart the Game</p>`;
 			hangmanTextElement.classList.add('lost');
+			hangmanTextElement.classList.remove('won');
 		}
 
 		if(animateFill) {

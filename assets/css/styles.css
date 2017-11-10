@@ -90,7 +90,7 @@ a {
 
 #hangman {
 	font-size: 60px;
-	font-size: 9vmin;
+	font-size: 7vmin;
 }
 
 .land
@@ -134,10 +134,10 @@ strong {
 	font-size: 13px;
 }
 
-.left-10 {
-	left: -10px;
+.left-0 {
+	left: 0px;
 }
 
-.top-10 {
-	top: -10px;
+.top-30 {
+	top: -30px;
 }
