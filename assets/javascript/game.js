@@ -71,12 +71,17 @@
 
 	playerName = prompt('Hello!! What should I call you?');
 	playerName = playerName || 'Anonymous';
+	takeaway.innerHTML = `Hi <strong>${playerName}</strong> Press any key to Start!! <i class="fa fa-play" aria-hidden="true"></i>`;
 
 	function getRandomState(id) {
 		if(id) {
 			return states[id];
 		}
 		return states[Math.floor(Math.random()*states.length)];
+	}
+
+	function removeState(state) {
+		states.splice(states.indexOf(state), 1);
 	}
 
 	function fillLand() {
@@ -88,18 +93,18 @@
 
 	function startGame() {
 		gameStarted = true;
+		currentState = getRandomState();
+		removeState(currentState);
 		animateFill = setInterval(function() {
 				fillLand();
 		}, 1000);
 		hangmanTextElement.classList.remove('lost');
 		hangmanTextElement.classList.remove('won');
-		currentState = {};
 		hangmanText = '';
 		lives = 6;
 		previousGuesses = [];
-		currentState = getRandomState();
 		livesElement.innerHTML = lives;
-		takeaway.innerHTML = `Let\'s play Hangman!! ${playerName}, Start typing letters. Guess the state of the USA`;
+		takeaway.innerHTML = `Let\'s play Hangman!! <strong>${playerName}</strong>, Start typing letters. Guess the state of the USA`;
 		hangmanText = currentState.name.replace(/[\s]/g, '  ').replace(/[a-z]/gi, '_ ');
 		hangmanTextElement.innerHTML = hangmanText.replace(/\s\s/g, '&nbsp;&nbsp;');
 		document.getElementById('sofarContainer').innerHTML = '<p>Letters guessed so far: <span id="sofar"></span></p>';
