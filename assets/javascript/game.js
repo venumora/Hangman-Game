@@ -97,7 +97,7 @@
 		hangmanText = '';
 		lives = 6;
 		previousGuesses = [];
-		currentState = getRandomState(4);
+		currentState = getRandomState();
 		livesElement.innerHTML = lives;
 		takeaway.innerHTML = `Let\'s play Hangman!! ${playerName}, Start typing letters. Guess the state of the USA`;
 		hangmanText = currentState.name.replace(/[\s]/g, '  ').replace(/[a-z]/gi, '_ ');
