@@ -90,7 +90,7 @@ a {
 
 #hangman {
 	font-size: 60px;
-	font-size: 10vmin;
+	font-size: 9vmin;
 }
 
 .land
@@ -122,4 +122,22 @@ strong {
 	font-weight: 700;
 	color: #b7ba0a;
 	font-size: 20px;
+}
+
+#sofar, #takeaway {
+	color: #b7ba0a;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+#sofarContainer {
+	font-size: 13px;
+}
+
+.left-10 {
+	left: -10px;
+}
+
+.top-10 {
+	top: -10px;
 }

@@ -57,13 +57,13 @@
 	animateFill = null,
 	gameStarted = false,
 	hangmanText = '',
-	lifes = 6,
+	lives = 6,
 	previousGuesses = [];
 
 	const lands = document.querySelectorAll('.land'),
 	hangmanTextElement = document.getElementById('hangman'),
 	takeaway = document.getElementById('takeaway'),
-	lifesElement = document.getElementById('lifes');
+	livesElement = document.getElementById('lives');
 
 	String.prototype.replaceAt = function(index, replacement) {
     	return this.substr(0, index) + replacement + this.substr(index + replacement.length);
@@ -94,13 +94,14 @@
 		hangmanTextElement.classList.remove('won');
 		currentState = {};
 		hangmanText = '';
-		lifes = 6;
+		lives = 6;
 		previousGuesses = [];
-		currentState = getRandomState();
-		lifesElement.innerHTML = lifes;
+		currentState = getRandomState(7);
+		livesElement.innerHTML = lives;
 		takeaway.innerHTML = `Let\'s play Hangman!! ${playerName || 'Anonymous'}. Guess the state of the USA`;
 		hangmanText = currentState.name.replace(/[\s]/g, '  ').replace(/[a-z]/gi, '_ ');
 		hangmanTextElement.innerHTML = hangmanText.replace(/\s\s/g, '&nbsp;&nbsp;');
+		document.getElementById('sofarContainer').innerHTML = '<p>Letters guessed so far: <span id="sofar"></span></p>';
 	}
 
 	function endGame(isWin) {
@@ -147,15 +148,16 @@
 				takeaway.innerHTML = `<strong>${counter}</strong> match(es)${counter ? ' Sweet!!' : ''}`;
 
 				if(!counter) {
-					lifes--;
-					lifesElement.innerHTML = lifes;
-				} else {
-					previousGuesses.push(userGuess);
+					lives--;
+					livesElement.innerHTML = lives;
 				}
+
+				previousGuesses.push(userGuess);
+				document.getElementById('sofar').innerHTML = previousGuesses.join(', ');
 
 				isWin = !hangmanText.match(/[_]/g);
 
-				if(!lifes || isWin) {
+				if(!lives || isWin) {
 					endGame(isWin);
 		  		}
 
