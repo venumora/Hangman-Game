@@ -15,6 +15,7 @@ html {
 	background-color: #666;
 	text-align: center;
 	color: #FFF;
+	padding: 10px 0px;
 }
 
 body {
@@ -22,7 +23,7 @@ body {
 	color: #777;
 	font-size: 16px;
 	margin: 0;
-	margin-bottom: 70px;
+	margin-bottom: 50px;
 }
 
 h1 {
@@ -74,4 +75,51 @@ a {
 
 .pos-a {
 	position: absolute;
+}
+
+
+.text-display {
+	text-align: center;
+	color: #5E5E5E;
+	font: bold 20px arial;
+	text-decoration: none;
+	text-align: center;
+	padding: 10px 0px;
+	word-wrap: break-word;
+}
+
+#hangman {
+	font-size: 60px;
+	font-size: 10vmin;
+}
+
+.land
+{
+	fill: #CCCCCC;
+	fill-opacity: 1;
+	stroke:white;
+	stroke-opacity: 1;
+	stroke-width:0.5;
+}
+
+.fill {
+	fill: #194f90;
+}
+
+.won
+{
+	fill: #c84c66;
+	color: #c84c66;
+}
+
+.lost
+{
+	fill: #b7ba0a;
+	color: #b7ba0a;
+}
+
+strong {
+	font-weight: 700;
+	color: #b7ba0a;
+	font-size: 20px;
 }
