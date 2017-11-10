@@ -70,6 +70,7 @@
 	}
 
 	playerName = prompt('Hello!! What should I call you?');
+	playerName = playerName || 'Anonymous';
 
 	function getRandomState(id) {
 		if(id) {
@@ -96,9 +97,9 @@
 		hangmanText = '';
 		lives = 6;
 		previousGuesses = [];
-		currentState = getRandomState();
+		currentState = getRandomState(4);
 		livesElement.innerHTML = lives;
-		takeaway.innerHTML = `Let\'s play Hangman!! ${playerName || 'Anonymous'}, Start typing letters. Guess the state of the USA`;
+		takeaway.innerHTML = `Let\'s play Hangman!! ${playerName}, Start typing letters. Guess the state of the USA`;
 		hangmanText = currentState.name.replace(/[\s]/g, '  ').replace(/[a-z]/gi, '_ ');
 		hangmanTextElement.innerHTML = hangmanText.replace(/\s\s/g, '&nbsp;&nbsp;');
 		document.getElementById('sofarContainer').innerHTML = '<p>Letters guessed so far: <span id="sofar"></span></p>';
@@ -106,6 +107,7 @@
 
 	function endGame(isWin) {
 		document.getElementById(currentState.id).classList.add(isWin ? 'won' : 'lost');
+		document.getElementById(currentState.id).classList.remove(isWin ? 'lost' : 'won');
 		lands.forEach(function(path){
 			path.classList.remove('fill');
 		});
